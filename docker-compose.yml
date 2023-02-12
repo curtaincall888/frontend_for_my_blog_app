@@ -3,17 +3,16 @@ services:
   frontend:
     build: ./
     command: sh -c "yarn run dev"
-    container_name: "Portfolio_Frontend"
+    container_name: "My_blog_Frontend"
     ports:
       - "3000:3000"
     volumes:
       - ./src:/app
     stdin_open: true
     tty: true
-# rails と 連携する場合はコメントアウトを外す
-#     networks:
-#       external-network:
-#         ipv4_address: 192.168.192.2
-# networks:
-#   external-network:
-#     external: true
+    networks:
+      external-my_blog_network:
+        ipv4_address: 192.168.192.2
+networks:
+  external-my_blog_network:
+    external: true
