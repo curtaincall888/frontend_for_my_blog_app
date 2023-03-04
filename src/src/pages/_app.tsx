@@ -1,7 +1,6 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
-import Layout from "component/commons/Layout";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -9,7 +8,7 @@ export default function App(props: AppProps) {
   return (
     <>
       <Head>
-        <title>My Blog</title>
+        <title>Page title</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -24,9 +23,7 @@ export default function App(props: AppProps) {
           colorScheme: "light",
         }}
       >
-        <Layout children={undefined}>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </MantineProvider>
     </>
   );
