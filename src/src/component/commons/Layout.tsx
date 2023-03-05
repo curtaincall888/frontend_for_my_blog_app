@@ -7,18 +7,30 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <DoubleHeader
         mainLinks={[
-          { label: "hoge", link: "#" },
-          { label: "fuga", link: "#" },
-          { label: "fizz", link: "#" },
-          { label: "buzz", link: "#" },
+          { label: "home", link: "/" },
+          { label: "blog", link: "/blog" },
+          { label: "profile", link: "#" },
+          { label: "my page", link: "#" },
         ]}
-        userLinks={[]}
+        userLinks={[
+          { label: "home", link: "#" },
+          { label: "blog", link: "#" },
+          { label: "fuga", link: "#" },
+          { label: "my page", link: "#" },
+        ]}
       />
 
       <div className="app-body">
         <main className="main">{children}</main>
       </div>
-      <FooterSimple links={[{ link: "#", label: "hoge" }]}></FooterSimple>
+      <FooterSimple
+        links={[
+          { label: "policy", link: "#" },
+          { label: "blog", link: "#" },
+          { label: "profile", link: "#" },
+          { label: "my page", link: "#" },
+        ]}
+      ></FooterSimple>
     </>
   );
 };

@@ -1,11 +1,4 @@
-import Layout from "@/component/commons/Layout";
-
-export default function Home() {
-  return (
-    <>
-      <Layout>
-        <h1>MY Blog app</h1>
-      </Layout>
-    </>
-  );
-}
+const Home = () => {
+  return <h1>Index page</h1>;
+};
+export default Home;
