@@ -9,7 +9,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         mainLinks={[
           { label: "home", link: "/" },
           { label: "blog", link: "/blog" },
-          { label: "profile", link: "#" },
+          { label: "profile", link: "/profile" },
           { label: "my page", link: "#" },
         ]}
         userLinks={[
