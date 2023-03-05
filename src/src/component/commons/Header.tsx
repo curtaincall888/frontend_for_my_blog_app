@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import {
   createStyles,
@@ -7,6 +8,7 @@ import {
   Group,
   Burger,
   rem,
+  Box,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
@@ -15,7 +17,7 @@ const HEADER_HEIGHT = rem(84);
 const useStyles = createStyles((theme) => ({
   inner: {
     height: HEADER_HEIGHT,
-    display: "flex",
+    // display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -44,7 +46,7 @@ const useStyles = createStyles((theme) => ({
 
   mainLink: {
     textTransform: "uppercase",
-    fontSize: rem(13),
+    fontSize: rem(18),
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[1]
@@ -53,6 +55,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     borderBottom: `${rem(2)} solid transparent`,
     transition: "border-color 100ms ease, color 100ms ease",
+    textDecoration: "none",
 
     "&:hover": {
       color: theme.colorScheme === "dark" ? theme.white : theme.black,
@@ -98,7 +101,22 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
   const [active, setActive] = useState(0);
 
   const mainItems = mainLinks.map((item, index) => (
-    <Anchor<"a">
+    // <Link
+    //   href={item.link}
+    //   key={item.label}
+    //   onClick={(event) => {
+    //     event.preventDefault();
+    //     setActive(index);
+    //   }}
+    //   className={cx(classes.mainLink, {
+    //     [classes.mainLinkActive]: index === active,
+    //   })}
+    //   passHref
+    // >
+    //   <Anchor>{item.label}</Anchor>
+    // </Link>
+
+    <Link
       href={item.link}
       key={item.label}
       className={cx(classes.mainLink, {
@@ -109,8 +127,21 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
         setActive(index);
       }}
     >
-      {item.label}
-    </Anchor>
+      <Anchor component="a">{item.label}</Anchor>
+    </Link>
+
+    // <Anchor
+    //   key={item.label}
+    //   className={cx(classes.mainLink, {
+    //     [classes.mainLinkActive]: index === active,
+    //   })}
+    //   onClick={(event) => {
+    //     event.preventDefault();
+    //     setActive(index);
+    //   }}
+    // >
+    //   <Link href={item.link}>{item.label}</Link>
+    // </Anchor>
   ));
 
   const secondaryItems = userLinks.map((item) => (
@@ -129,7 +160,7 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
       <Container className={classes.inner}>
         <div className={classes.links}>
           <Group position="right">{secondaryItems}</Group>
-          <Group spacing={0} position="right" className={classes.mainLinks}>
+          <Group spacing={0} position="center" className={classes.mainLinks}>
             {mainItems}
           </Group>
         </div>
