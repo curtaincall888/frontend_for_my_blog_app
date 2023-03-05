@@ -8,7 +8,6 @@ import {
   Group,
   Burger,
   rem,
-  Box,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
@@ -83,6 +82,10 @@ const useStyles = createStyles((theme) => ({
     borderBottomColor:
       theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 5 : 6],
   },
+
+  navLink: {
+    textDecoration: "none",
+  },
 }));
 
 interface LinkProps {
@@ -101,23 +104,7 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
   const [active, setActive] = useState(0);
 
   const mainItems = mainLinks.map((item, index) => (
-    // <Link
-    //   href={item.link}
-    //   key={item.label}
-    //   onClick={(event) => {
-    //     event.preventDefault();
-    //     setActive(index);
-    //   }}
-    //   className={cx(classes.mainLink, {
-    //     [classes.mainLinkActive]: index === active,
-    //   })}
-    //   passHref
-    // >
-    //   <Anchor>{item.label}</Anchor>
-    // </Link>
-
-    <Link
-      href={item.link}
+    <Anchor
       key={item.label}
       className={cx(classes.mainLink, {
         [classes.mainLinkActive]: index === active,
@@ -127,21 +114,10 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
         setActive(index);
       }}
     >
-      <Anchor component="a">{item.label}</Anchor>
-    </Link>
-
-    // <Anchor
-    //   key={item.label}
-    //   className={cx(classes.mainLink, {
-    //     [classes.mainLinkActive]: index === active,
-    //   })}
-    //   onClick={(event) => {
-    //     event.preventDefault();
-    //     setActive(index);
-    //   }}
-    // >
-    //   <Link href={item.link}>{item.label}</Link>
-    // </Anchor>
+      <Link href={item.link} className={classes.navLink}>
+        {item.label}
+      </Link>
+    </Anchor>
   ));
 
   const secondaryItems = userLinks.map((item) => (
